@@ -1,0 +1,8 @@
+p There are {{results.length}} ratings for that place in the system!
+div(ng-repeat='rating in results')
+    h3   Stock id: {{rating.stock_id}}
+    div  Description: {{rating.description}}
+    div  User id: {{rating.user_id}}
+    div  Start date: {{rating.start_date}}
+    div  End date: {{rating.end_date}}
+    br

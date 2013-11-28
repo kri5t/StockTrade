@@ -1,0 +1,20 @@
+h2 Add a new user
+label(for='user_id') user_id:
+input(ng-model='form.user_id', name='user_id')
+br
+label(for='user_name') user_name:
+input(ng-model='form.user_name', name='user_name')
+br
+label(for='ancienity') ancienity:
+input(ng-model='form.ancienity', name='ancienity')
+br
+label(for='address') address:
+input(ng-model='form.address', name='address')
+br
+label(for='city') city:
+input(ng-model='form.city', name='city')
+br
+label(for='country') country:
+input(ng-model='form.country', name='country')
+p
+    button(ng-click='addUser()') Add User
