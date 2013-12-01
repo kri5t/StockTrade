@@ -60,10 +60,8 @@ function GetRatingByUserCtrl($scope, $http, $routeParams) {
 
 function AddRatingForStockCtrl($scope, $http, $location, $routeParams) {
     $scope.form = {};
-    $http.get('/api/getAllStocks').
-        success(function(data) {
-            $scope.places = data.results;
-        });
+    $scope.form.stock_id = $routeParams.stockID;
+
     $http.get('/api/users/').
         success(function(data) {
             $scope.users = data.results;
@@ -72,7 +70,7 @@ function AddRatingForStockCtrl($scope, $http, $location, $routeParams) {
     $scope.addRatingForPlace = function () {
         $http.post('/api/ratings', $scope.form).
             success(function(data) {
-                console.log(data)
+
                 $location.path('/');
             });
     };

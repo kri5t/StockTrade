@@ -27,7 +27,7 @@ angular.module('stocktrade', ['stocktrade.filters', 'stocktrade.services', 'stoc
                 templateUrl: 'index',
                 controller: GetRatingByUserCtrl
             }).
-            when('/addRating', {
+            when('/addRating/:stockID', {
                 templateUrl: '../partials/addRatingForPlace',
                 controller: AddRatingForStockCtrl
             }).
