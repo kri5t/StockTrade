@@ -1,0 +1,13 @@
+div(ng-repeat='user in user')
+    h3  Username: {{user.user_name}}
+    div Name: {{user.user_id}}
+br
+br
+h3 Ratings
+p There are {{results.length}} ratings from this user in the system!
+br
+div(ng-repeat='rating in results')
+    h5 Rating {{$index+1}}. {{rating.place_name}}
+    div {{rating.description}}
+    div {{rating.date}}
+    br

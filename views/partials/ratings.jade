@@ -1,8 +1,14 @@
+div(ng-repeat='stock in stock')
+    h3  The stock id: {{stock.stock_id}}
+    div The stock name: {{stock.name}}
+br
+h3 Ratings
 p There are {{results.length}} ratings for that place in the system!
 div(ng-repeat='rating in results')
     h3   Stock id: {{rating.stock_id}}
     div  Description: {{rating.description}}
-    div  User id: {{rating.user_id}}
+    div  User id:
+        a(href='#/getUserByID/{{rating.user_id}}') {{rating.user_id}}
     div  Start date: {{rating.start_date}}
     div  End date: {{rating.end_date}}
     br

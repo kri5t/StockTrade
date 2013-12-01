@@ -12,16 +12,16 @@ angular.module('stocktrade', ['stocktrade.filters', 'stocktrade.services', 'stoc
                 controller: AddUserCtrl
             }).
             when('/getUserByID/:id', {
-                templateUrl: 'index',
+                templateUrl: '../partials/user',
                 controller: GetUserCtrl
             }).
             when('/getUserList', {
                 templateUrl: '../partials/users',
                 controller: GetUserListCtrl
             }).
-            when('/getRatingByPlaceID/:id', {
+            when('/getRatingByStockID/:id', {
                 templateUrl: '../partials/ratings',
-                controller: GetRatingByPlaceCtrl
+                controller: GetRatingByStockCtrl
             }).
             when('/getRatingByUser/:userID', {
                 templateUrl: 'index',
@@ -29,7 +29,7 @@ angular.module('stocktrade', ['stocktrade.filters', 'stocktrade.services', 'stoc
             }).
             when('/addRating', {
                 templateUrl: '../partials/addRatingForPlace',
-                controller: AddRatingForPlaceCtrl
+                controller: AddRatingForStockCtrl
             }).
             when('/addStock', {
                 templateUrl: '../partials/addStock',

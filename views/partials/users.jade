@@ -1,4 +1,6 @@
-p There are {{results.length}} users in the system!
-div(ng-repeat='user in results')
-    h3   {{user.user_name}} (ID = {{user.user_id}})
-    br
+h3 Users
+    p There are {{results.length}} users in the system!
+    div(ng-repeat='user in results')
+        {{$index+1}}.
+        a(href='#/getUserByID/{{user.user_id}}') {{user.user_id}}
+        br

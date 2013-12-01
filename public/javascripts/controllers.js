@@ -22,8 +22,14 @@ function AddUserCtrl($scope, $http, $location) {
 function GetUserCtrl($scope, $http, $routeParams) {
     $http.get('/api/users/' + $routeParams.id).
         success(function(data) {
-            $scope.post = data.post;
+            $scope.user = data.results;
         });
+
+    $http.get('/api/getRatingByUser/' + $routeParams.id).
+        success(function(data) {
+            $scope.results = data.results;
+        });
+
 }
 
 function GetUserListCtrl($scope, $http, $routeParams) {
@@ -33,7 +39,12 @@ function GetUserListCtrl($scope, $http, $routeParams) {
         });
 }
 
-function GetRatingByPlaceCtrl($scope, $http, $routeParams) {
+function GetRatingByStockCtrl($scope, $http, $routeParams) {
+    $http.get('/api/stocks/' + $routeParams.id).
+        success(function(data) {
+            $scope.stock = data.results;
+        });
+
     $http.get('/api/ratings/' + $routeParams.id).
         success(function(data) {
             $scope.results = data.results;
@@ -47,7 +58,7 @@ function GetRatingByUserCtrl($scope, $http, $routeParams) {
         });
 }
 
-function AddRatingForPlaceCtrl($scope, $http, $location, $routeParams) {
+function AddRatingForStockCtrl($scope, $http, $location, $routeParams) {
     $scope.form = {};
     $http.get('/api/getAllStocks').
         success(function(data) {

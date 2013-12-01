@@ -25,7 +25,7 @@ exports.findRatingsForStockID = function(req, res){
  * @param res
  */
 exports.findRatingsByUserID = function(req, res) {
-    var sql = "SELECT user_id,description,stock_id FROM rating WHERE user_id='" + req.params.id + "'";
+    var sql = "SELECT user_id,description,stock_id FROM rating WHERE user_id='" + req.params.userID + "'";
     var errorMessage = "ERROR WHILE FINDING USER ID!!!";
     var noResultMessage = "No result ratings specified user";
     var prefixResultMessage = "Ratings by user ID: ";

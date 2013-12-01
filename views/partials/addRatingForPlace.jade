@@ -8,9 +8,6 @@ label(for='address') User ID:
 select(ng-model='form.user_id', name='user_id')
     option(ng-repeat='user in users') {{user.user_id}}
 br
-label(for='rating_id') rating_id:
-input(ng-model='form.rating_id', name='rating_id')
-br
 label(for='description') description:
 input(ng-model='form.description', name='description')
 br

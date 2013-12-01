@@ -49,7 +49,7 @@ exports.addUser = function(req, res){
  * @param res
  */
 exports.getUserByID = function(req, res){
-    var sql = "SELECT user_name FROM user WHERE user_id='" + req.params.id + "'";
+    var sql = "SELECT user_name,user_id FROM user WHERE user_id='" + req.params.id + "'";
     var errorMessage = "ERROR WHILE FINDING User ID!!!!";
     var noResultMessage = "No result for user ID";
     var prefixResultMessage = "User by User ID: ";
