@@ -2,12 +2,17 @@ extends layout
 
 block content
 
-    script(src='javascripts/lib/angular/angular.js')
+    script(src='javascripts/lib/angular-1.2.5/angular.js')
+    script(src='javascripts/lib/angular-1.2.5/angular-route.js')
     script(src='javascripts/lib/bootstrap-gh-pages/ui-bootstrap-0.7.0.js')
     script(src='javascripts/lib/bootstrap-gh-pages/ui-bootstrap-tpls-0.7.0.js')
+    script(src='http://code.angularjs.org/1.0.0rc10/angular-cookies-1.0.0rc10.js')
     script(src='javascripts/app.js')
+    script(src='javascripts/controllers/ratingController.js')
+    script(src='javascripts/controllers/homeController.js')
+    script(src='javascripts/controllers/stockController.js')
+    script(src='javascripts/controllers/userController.js')
     script(src='javascripts/services.js')
-    script(src='javascripts/controllers.js')
     script(src='javascripts/filters.js')
     script(src='javascripts/directives.js')
 
@@ -34,12 +39,17 @@ block content
                 li
                     a(href='#/addUser') Add User
 
-            form(class="navbar-form navbar-left",role="search")
-                div(class="form-group")
-                    input(type="text",class="form-control",placeholder="Search")
-                button(type="submit",class="btn btn-default") Submit
+            div(class="form-group",ng-controller="SearchForStockCtrl")
+                input(type="text",ng-model='form.searchtext', class="form-control",placeholder="Hvad vil du?", bs-typeahead='typeaheadPlaceSearch', typeahead-on-select="shiftToResult()", typeahead="stock.stock_id + ', ' + stock.name for stock in stocks | filter:$viewValue | limitTo:8")
+            button(type="submit",class="btn btn-default", ng-click='searchForPlace()') Find aktie
 
-            button(type="button",class="btn btn-default navbar-btn navbar-right") Sign in
-
+            a(href="/auth/facebook")
+                button(id='fb-login', class="fb-login", type="button", ng-show='DisplayFacebookLogin') Log på med Facebook
+            //a(href="/auth/facebook") Login with Facebook
+            a(href='#/getUserByID/{{facebook_user}}',class="facebook-loggedin")
+                img(src='https://graph.facebook.com/{{facebook_user}}/picture',ng-show='DisplayLoggedIn')
+    br
+    br
     div(id="mainWrapper",ng-view)
+    div(id="fb-root")
 

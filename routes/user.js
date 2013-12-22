@@ -56,3 +56,43 @@ exports.getUserByID = function(req, res){
 
     db.queryDatabaseGet(res,sql,errorMessage,noResultMessage,prefixResultMessage);
 };
+
+/**
+ * Returns user based on the given ID.
+ * @param req
+ * @param res
+ */
+exports.getUserByFacebookID = function(facebookID, name, country,city,dbSuccessCallback){
+    var sqlGetUser = "SELECT user_name,user_id FROM user WHERE user_id='" + facebookID + "'";
+    console.log("hihihihih" + facebookID);
+    var sqlAddUser = "INSERT INTO user (user_id,user_name,country,city) VALUES ?";
+    var values = [
+        [facebookID,name,country,city]
+    ];
+    db.queryDatabaseGetAndAddUser(sqlGetUser, sqlAddUser, values,dbSuccessCallback);
+};
+
+/**
+* Returns user based on the given ID.
+* @param req
+* @param res
+*/
+exports.getUserByFacebookID_TEST = function(facebookID, name,dbSuccessCallback){
+    var sqlGetUser = "SELECT user_name,user_id FROM user WHERE user_id='" + facebookID + "'";
+
+    db.queryDatabaseGetFacebook(sqlGetUser,dbSuccessCallback);
+};
+
+/**
+ * Simply adds a user.
+ * @param req
+ * @param res
+ */
+exports.addUserByFacebookID = function(facebookID, name, address,callback) {
+    var sqlAddUser = "INSERT INTO user (user_id,user_name,address) VALUES ?";
+    var values = [
+        [facebookID,name,address]
+    ];
+
+    var result = db.queryDatabaseFacebookPost(sqlAddUser, values,callback);
+};

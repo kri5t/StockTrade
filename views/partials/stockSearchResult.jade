@@ -1,0 +1,7 @@
+h3 Search results
+p Number of search results: {{searchPlaceResult.length}} !
+div(ng-repeat='stock in searchStockResult' class="searchresults")
+    h4   {{$index+1}}. {{stock.name}}
+    div id: {{stock.stock_id}}
+    a(href='#/getRatingByStockID/{{stock.stock_id}}') Get Ratings For {{stock.name}}
+    br

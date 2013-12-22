@@ -9,7 +9,7 @@ var db = require('./database');
  * @param res
  */
 exports.findStockByID = function(req, res){
-    var sql = "SELECT stock_id,name FROM stock WHERE stock_id='" + req.params.id + "'";
+    var sql = "SELECT stock_id,name FROM stock WHERE stock_id LIKE '%" +  req.params.id + "%'";
     var errorMessage = "ERROR WHILE FINDING PLACE ID!!!";
     var noResultMessage = "No result for place ID";
     var prefixResultMessage = "Places by place ID: ";
