@@ -9,6 +9,7 @@ var rating = require('./routes/rating');
 var stocks = require('./routes/stocks');
 var http = require('http');
 var path = require('path');
+var passport = require('passport');
 
 var app = express();
 
@@ -19,14 +20,25 @@ app.set('view engine', 'jade');
 app.set('view options', {
     layout: false
 });
-app.use(express.bodyParser());
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+
+//Configuration
+app.configure("all", function(){
+	app.use(express.bodyParser());
+	app.use(express.favicon());
+	app.use(express.logger('dev'));
+	app.use(express.json());
+	app.use(express.urlencoded());
+	app.use(express.methodOverride());
+
+	app.use(express.cookieParser());
+	app.use(express.session({ secret: 'keyboard cat' }));
+//	app.use(passport.initialize());
+//	app.use(passport.session());
+
+	app.use(app.router);
+	app.use(express.static(path.join(__dirname, 'public')));
+});
+
 
 // development only
 if ('development' == app.get('env')) {
