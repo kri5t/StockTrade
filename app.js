@@ -51,8 +51,11 @@ passport.use(new FacebookStrategy({
                 if(returnedData === true) {
                     done(null, user);
                 } else {
-                    console.log(profile);
-                    user.addUserByFacebookID(profile._json.id,profile._json.name,profile._json.location.name, function(resultData) {
+                    var location = "";
+                    if(profile._json.location) {
+                        location = profile._json.location.name;
+                    }
+                    user.addUserByFacebookID(profile._json.id,profile._json.name,location, function(resultData) {
                         if(resultData === true) {
                             return done(null, user);
                         } else {
