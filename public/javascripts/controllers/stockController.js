@@ -23,27 +23,31 @@ function FindAllStocksCtrl($scope, $http, $routeParams,HttpService) {
 }
 
 function SearchForStockCtrl($scope, $http, $location,$rootScope) {
-    $scope.$watch('form.searchtext',function() {
-        $scope.stocks = {};
-        if($scope.form !== undefined) {
-            $http.get('/api/stocks/' + $scope.form.searchtext +'/').
-                success(function(data) {
-                    if(data.results === undefined || data.results.length === 0) {
-                        var noResults = {stock_id: "Aktien eksisterer ikke",name: "Opret aktie med knappen til højre!"}
-                        $scope.stocks = new Array(noResults);
-                    } else {
-                        $scope.stocks = data.results;
-                    }
+
+    $scope.getStock = function(val) {
+        return $http.get('/api/stocks/' + $scope.form.searchtext +'/').then(function(res) {
+            if(res.data.results === undefined || res.data.results.length === 0) {
+                var results = new Array({
+                    stock_id: "Aktien eksisterer ikke",
+                    name: "Opret aktie med knappen til højre!"
                 });
-        }
-        $scope.stocks = {};
-    });
+                return results;
+            } else {
+                return res.data.results;
+            }
+        });
+    };
+
     $scope.shiftToResult = function() {
         var searchText = $scope.form.searchtext.split(",");
         var resOne = searchText[0].trim();
-        $location.path("getRatingByStockID/" + resOne);
+
+        if(searchText.indexOf("eksisterer ikke") != -1) {
+            $location.path("addPlace");
+        }else {
+            $location.path("getRatingByStockID/" + resOne);
+        }
         $scope.form.searchtext = "";
-        $scope.stocks = {};
     }
 
     $scope.searchForPlace = function() {
