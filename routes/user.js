@@ -64,7 +64,7 @@ exports.getUserByID = function(req, res){
  */
 exports.getUserByFacebookID = function(facebookID, name, country,city,dbSuccessCallback){
     var sqlGetUser = "SELECT user_name,user_id FROM user WHERE user_id='" + facebookID + "'";
-    console.log("hihihihih" + facebookID);
+
     var sqlAddUser = "INSERT INTO user (user_id,user_name,country,city) VALUES ?";
     var values = [
         [facebookID,name,country,city]

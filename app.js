@@ -49,7 +49,7 @@ passport.use(new FacebookStrategy({
             user.getUserByFacebookID_TEST(profile._json.id, profile._json.name, function(returnedData) {
                 console.log(returnedData);
                 if(returnedData === true) {
-                    done(null, user);
+                    done(null, profile);
                 } else {
                     var location = "";
                     if(profile._json.location) {
@@ -57,7 +57,7 @@ passport.use(new FacebookStrategy({
                     }
                     user.addUserByFacebookID(profile._json.id,profile._json.name,location, function(resultData) {
                         if(resultData === true) {
-                            return done(null, user);
+                            return done(null, profile);
                         } else {
                             return done(resultData);
 
@@ -112,10 +112,10 @@ app.post('/api/stocks', auth, stocks.addStock);
 app.get('/api/getAllStocks', stocks.findAllStocks);
 
 app.get('/loggedin', function(req, res) {
-    res.send(req.isAuthenticated() ? req.user : '0');
+    res.json({user:req.isAuthenticated() ? req.user : '0'});
 });
-app.post('/login', passport.authenticate('local'), function(req, res) {
-    res.send(req.user);
+app.post('/', passport.authenticate('local'), function(req, res) {
+    res.json({user:req.user});
 });
 app.post('/logout', function(req, res){
     req.logOut(); res.send(200);
