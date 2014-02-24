@@ -4,8 +4,7 @@ block content
 
     script(src='javascripts/lib/angular-1.2.5/angular.js')
     script(src='javascripts/lib/angular-1.2.5/angular-route.js')
-    script(src='javascripts/lib/bootstrap-gh-pages/ui-bootstrap-0.7.0.js')
-    script(src='javascripts/lib/bootstrap-gh-pages/ui-bootstrap-tpls-0.7.0.js')
+    script(src='javascripts/lib/bootstrap-gh-pages/ui-bootstrap-tpls-0.10.0.min.js')
     script(src='http://code.angularjs.org/1.0.0rc10/angular-cookies-1.0.0rc10.js')
     script(src='javascripts/app.js')
     script(src='javascripts/controllers/ratingController.js')
@@ -39,15 +38,18 @@ block content
                 li
                     a(href='#/addUser') Add User
 
-            div(class="form-group",ng-controller="SearchForStockCtrl")
-                input(type="text",ng-model='form.searchtext', class="form-control",placeholder="Hvad vil du?", bs-typeahead='typeaheadPlaceSearch', typeahead-on-select="shiftToResult()", typeahead="stock.stock_id + ', ' + stock.name for stock in getStock($viewValue) | filter:$viewValue | limitTo:8")
-            button(type="submit",class="btn btn-default", ng-click='searchForPlace()') Find aktie
-
-            a(href="/auth/facebook")
-                button(id='fb-login', class="fb-login", type="button", ng-show='DisplayFacebookLogin') Log på med Facebook
-            //a(href="/auth/facebook") Login with Facebook
-            a(href='#/getUserByID/{{facebook_user}}',class="facebook-loggedin")
-                img(src='https://graph.facebook.com/{{facebook_user}}/picture',ng-show='DisplayLoggedIn')
+            form(class="form-inline",role="form",ng-controller="SearchForStockCtrl")
+                div(class="form-group")
+                    input(type="text",ng-model='searchtext', class="form-control",placeholder="Hvad vil du?", bs-typeahead,
+                        typeahead-on-select="shiftToResult($item)", typeahead="stock.stock_id + ', ' + stock.name for stock in getStock($viewValue) | filter:$viewValue | limitTo:8")
+                div(class="form-group")
+                    button(type="submit",class="btn btn-default", ng-click='searchForPlace()') Find aktie
+            div(class="pull-right")
+                a(href="/auth/facebook")
+                    button(id='fb-login', class="fb-login", type="button", ng-show='DisplayFacebookLogin') Log på med Facebook
+                //a(href="/auth/facebook") Login with Facebook
+                a(href='#/getUserByID/{{facebook_user}}',class="facebook-loggedin")
+                    img(src='https://graph.facebook.com/{{facebook_user}}/picture',ng-show='DisplayLoggedIn')
     br
     br
     div(id="mainWrapper",ng-view)
