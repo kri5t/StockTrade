@@ -1,6 +1,6 @@
 h3 Users
     p There are {{results.length}} users in the system!
     div(ng-repeat='user in results')
-        {{$index+1}}.
+        {{$index+1}}
         a(href='#/getUserByID/{{user.user_id}}') {{user.user_id}}
         br

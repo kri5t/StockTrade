@@ -25,7 +25,7 @@ function FindAllStocksCtrl($scope, $http, $routeParams,HttpService) {
 function SearchForStockCtrl($scope, $http, $location,$rootScope) {
 
     $scope.getStock = function(val) {
-        return $http.get('/api/stocks/' + $scope.form.searchtext +'/').then(function(res) {
+        return $http.get('/api/stocks/' + val +'/').then(function(res) {
             if(res.data.results === undefined || res.data.results.length === 0) {
                 var results = new Array({
                     stock_id: "Aktien eksisterer ikke",
@@ -38,16 +38,15 @@ function SearchForStockCtrl($scope, $http, $location,$rootScope) {
         });
     };
 
-    $scope.shiftToResult = function() {
-        var searchText = $scope.form.searchtext.split(",");
-        var resOne = searchText[0].trim();
+	$scope.shiftToResult = function($item) {
+        var resOne = $item.stock_id;
 
-        if(searchText.indexOf("eksisterer ikke") != -1) {
+        if(resOne.indexOf("eksisterer ikke") != -1) {
             $location.path("addPlace");
         }else {
             $location.path("getRatingByStockID/" + resOne);
         }
-        $scope.form.searchtext = "";
+        $scope.searchtext = "";
     }
 
     $scope.searchForPlace = function() {

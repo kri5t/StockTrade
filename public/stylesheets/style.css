@@ -10,3 +10,7 @@ a {
 #mainWrapper{
     margin-top: 10px;
 }
+
+#searchArea{
+    width: 100px;
+}
