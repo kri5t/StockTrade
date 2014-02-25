@@ -22,11 +22,10 @@ block content
                 span(class="icon-bar")
                 span(class="icon-bar")
                 span(class="icon-bar")
+            a(class="navbar-brand", href="#") #{title}
 
-        div(class="collapse navbar-collapse",id="bs-example-navbar-collapse-1")
+        div(class="collapse navbar-collapse")
             ul(class="nav navbar-nav")
-                li
-                    a(class="navbar-brand", href="#") #{title}
                 li
                     a(href='#/') Home
                 li
@@ -38,18 +37,18 @@ block content
                 li
                     a(href='#/addUser') Add User
 
-            form(class="form-inline",role="form",ng-controller="SearchForStockCtrl")
+            form(class="navbar-form navbar-left",role="form",ng-controller="SearchForStockCtrl")
                 div(class="form-group")
                     input(type="text",ng-model='searchtext', class="form-control",placeholder="Hvad vil du?", bs-typeahead,
                         typeahead-on-select="shiftToResult($item)", typeahead="stock.stock_id + ', ' + stock.name for stock in getStock($viewValue) | filter:$viewValue | limitTo:8")
-                div(class="form-group")
-                    button(type="submit",class="btn btn-default", ng-click='searchForPlace()') Find aktie
-            div(class="pull-right")
-                a(href="/auth/facebook")
-                    button(id='fb-login', class="fb-login", type="button", ng-show='DisplayFacebookLogin') Log på med Facebook
-                //a(href="/auth/facebook") Login with Facebook
-                a(href='#/getUserByID/{{facebook_user}}',class="facebook-loggedin")
-                    img(src='https://graph.facebook.com/{{facebook_user}}/picture',ng-show='DisplayLoggedIn')
+                button(type="submit",class="btn btn-default", ng-click='searchForPlace()') Find aktie
+            ul(class="nav navbar-nav navbar-right")
+                li
+                    a(href="/auth/facebook")
+                        button(id='fb-login', class="fb-login", type="button", ng-show='DisplayFacebookLogin') Log på med Facebook
+                li
+                    a(href='#/getUserByID/{{facebook_user}}',class="facebook-loggedin")
+                        img(src='https://graph.facebook.com/{{facebook_user}}/picture',ng-show='DisplayLoggedIn')
     br
     br
     div(id="mainWrapper",ng-view)
