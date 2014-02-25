@@ -1,10 +1,11 @@
-h2 Add a new Stock
-
-label(for='stock_id') stock_id:
-input(ng-model='form.stock_id', name='stock_id')
-br
-label(for='name') name:
-input(ng-model='form.name', name='name')
-br
-p
-   button(ng-click='addStock()') Add Stock
+div(class="row")
+    h2 Add a new Stock
+    div(class="col-md-4")
+        form(role="form")
+            div(class="form-group")
+                label(for='stockId') Stock id:
+                input(type='text',class="form-control",ng-model='form.stock_id', id='stockId', placeholder="Stock id")
+            div(class="form-group")
+                label(for='nameInput') Name:
+                input(type='text',class="form-control",ng-model='form.name', id='nameInput',placeholder="Name")
+            button(type="button",class="btn btn-default",ng-click='addStock()') Add Stock

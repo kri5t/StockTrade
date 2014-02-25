@@ -1,20 +1,24 @@
-h2 Add a new user
-label(for='user_id') user_id:
-input(ng-model='form.user_id', name='user_id')
-br
-label(for='user_name') user_name:
-input(ng-model='form.user_name', name='user_name')
-br
-label(for='ancienity') ancienity:
-input(ng-model='form.ancienity', name='ancienity')
-br
-label(for='address') address:
-input(ng-model='form.address', name='address')
-br
-label(for='city') city:
-input(ng-model='form.city', name='city')
-br
-label(for='country') country:
-input(ng-model='form.country', name='country')
-p
-    button(ng-click='addUser()') Add User
+div(class="row")
+    form(role="form")
+        h2 Add a new user
+        div(class="col-md-4")
+            div(class="form-group")
+                label(for='user_id') User id:
+                input(type='text',class="form-control",ng-model='form.user_id', id='user_id',placeholder="User id")
+            div(class="form-group")
+                label(for='user_name') User name:
+                input(type='text',class="form-control",ng-model='form.user_name', id='user_name',placeholder="User name")
+            div(class="form-group")
+                label(for='ancienity') Ancienity:
+                input(type='text',class="form-control",ng-model='form.ancienity', id='ancienity',placeholder="Ancienity")
+            div(class="form-group")
+                label(for='address') Address:
+                input(type='text',class="form-control",ng-model='form.address', id='address',placeholder="Address")
+            div(class="form-group")
+                label(for='city') City:
+                input(type='text',class="form-control",ng-model='form.city', id='city',placeholder="City")
+            div(class="form-group")
+                label(for='country') Country:
+                input(type='text',class="form-control",ng-model='form.country', id='country',placeholder="Country")
+            div(class="form-group")
+                button(class="btn btn-default", ng-click='addUser()') Add User
