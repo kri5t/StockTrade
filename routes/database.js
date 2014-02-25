@@ -9,7 +9,7 @@ var db_config = {
     port : 3306,
     database: 'stocks',
     user     : 'root',
-    password : '',
+    password : 'StockTrade1',
     connectionLimit : 500,
     waitForConnections : true,
     queueLimit : 0

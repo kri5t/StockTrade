@@ -47,7 +47,7 @@ passport.use(new FacebookStrategy({
     function(accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
             user.getUserByFacebookID_TEST(profile._json.id, profile._json.name, function(returnedData) {
-                console.log(returnedData);
+                //console.log(returnedData);
                 if(returnedData === true) {
                     done(null, profile);
                 } else {
@@ -118,7 +118,10 @@ app.post('/', passport.authenticate('local'), function(req, res) {
     res.json({user:req.user});
 });
 app.post('/logout', function(req, res){
-    req.logOut(); res.send(200);
+	req.logOut();
+	req.session.destroy(function (err) {
+		res.redirect('/');
+	});
 });
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -7,17 +7,18 @@
 
 var stockTradeServices = angular.module('stocktrade.services', []);
 
-stockTradeServices.factory('Auth', function($q, $http,$timeout,$location,$rootScope){
+stockTradeServices.factory('Auth', function($q, $http, $timeout, $location, $rootScope){
     return {
         checkLogin: function(callback) {
             var deferred = $q.defer();
-            $http.get('/loggedin').then(function(user) {
-                var status = user.data.user;
-                if (status !== '0') {
+            $http.get('/loggedin').then(function(userData) {
+
+                var user = userData.data.user;
+                if (user !== '0') {
                     $timeout(deferred.resolve, 0);
 
-                    $rootScope.facebook_user = user.data.user.id;
-                    $rootScope.facebook_user_name = user.data.user.displayName;
+                    $rootScope.facebook_user = user.id;
+                    $rootScope.facebook_user_name = user.displayName;
                     $rootScope.DisplayFacebookLogin = false;
                     $rootScope.DisplayLoggedIn = true;
 
