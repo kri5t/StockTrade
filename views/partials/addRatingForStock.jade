@@ -1,0 +1,33 @@
+div(class="row")
+    div(class="col-md-4")
+        h3 {{form.stock_id}}
+            small Add rating for stock
+        div(class="form-group")
+            label(for='user_id') User ID:
+            select(class="form-control",ng-model='form.user_id', id='user_id')
+                option(ng-repeat='user in users') {{user.user_id}}
+        div(class="form-group")
+            label(for='description') description:
+            input(type='text',class="form-control",ng-model='form.description', id='description')
+        div(class="form-group")
+            label(for='rating') rating:
+            input(type='text',class="form-control",ng-model='form.rating', id='rating')
+        div(class="form-group")
+            label(for='reference') reference:
+            input(type='text',class="form-control",ng-model='form.reference', id='reference')
+        div(class="form-group")
+            label(for='start_date') start_date:
+            p(class="input-group")
+                input(id='start_date',type="text",class="form-control",datepicker-popup="{{form.start_date}}",ng-model="form.start_date",is-open="opened",min="minDate",max="'2015-06-22'",date-disabled="disabled(date, mode)",ng-required="true",close-text="Close")
+                span(class="input-group-btn")
+                    button(class="btn btn-default",ng-click="open($event)")
+                        i(class="glyphicon glyphicon-calendar")
+        div(class="form-group")
+            label(for='end_date') end_date:
+            p(class="input-group")
+                input(id='end_date',type="text",class="form-control",datepicker-popup="{{form.end_date}}",ng-model="form.end_date",is-open="opened",min="minDate",max="'2015-06-22'",date-disabled="disabled(date, mode)",ng-required="true",close-text="Close")
+                span(class="input-group-btn")
+                    button(class="btn btn-default",ng-click="open($event)")
+                        i(class="glyphicon glyphicon-calendar")
+
+        button(class="btn btn-default",ng-click='addRatingForPlace()') Add Rating

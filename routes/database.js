@@ -39,7 +39,7 @@ handleDisconnect();
  */
 exports.queryDatabaseGet = function(res, sql, errorMessage, noResultMessage, prefixResultMessage){
     pool.getConnection(function(err, connection) {
-        connection.query(sql, function(err,results) {
+        connection.query(sql, function(err,results, fields) {
             if (err) {
                 res.json(false);
             }
@@ -51,6 +51,23 @@ exports.queryDatabaseGet = function(res, sql, errorMessage, noResultMessage, pre
         });
     });
 };
+
+exports.queryDatabaseGetSingle = function(res, sql, errorMessage, noResultMessage, prefixResultMessage){
+    pool.getConnection(function(err, connection) {
+        connection.query(sql, function(err,results, fields) {
+            if (err) {
+                res.json(false);
+            }
+            if (results != null && results.length  > 0) {
+                res.json({results: results[0]});
+            } else {
+                res.json(false);
+            }
+        });
+    });
+};
+
+
 
 /**
  * The function inserts into the database whatever contained in the given sql statement.
