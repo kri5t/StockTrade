@@ -1,13 +1,23 @@
 div(class="row")
     div
-        h3  {{user[0].user_name}}
-    br
-    br
-    h3 Ratings
-    p There are {{results.length}} ratings from this user in the system!
-    br
-    div(ng-repeat='rating in results')
-        h5 Rating {{$index+1}}. {{rating.place_name}}
-        div {{rating.description}}
-        div {{rating.date}}
-        br
+        h3  {{user.user_name}}
+
+    div(class="col-md-4")
+        div(class="panel panel-default")
+            <!-- Default panel contents -->
+            div(class="panel-heading") Ratings
+            div(class="panel-body")
+                p There are {{results.length}} ratings from this user in the system!
+
+            <!-- Table -->
+            table(class="table")
+                thead
+                    tr
+                        th Place
+                        th Description
+                        th Date
+                tbody
+                    tr(ng-repeat='rating in results')
+                        td Rating {{$index+1}}. {{rating.place_name}}
+                        td {{rating.description}}
+                        td {{rating.date}}

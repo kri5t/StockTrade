@@ -57,7 +57,7 @@ stockTradeApp.config(function($routeProvider,$httpProvider, $locationProvider) {
             }
         }).
         when('/addRating/:stockID', {
-            templateUrl: '../partials/addRatingForPlace',
+            templateUrl: '../partials/addRatingForStock',
             controller: 'AddRatingForStockCtrl',
             access: {
                 isFree: false

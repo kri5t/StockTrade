@@ -2,10 +2,10 @@ extends layout
 
 block content
 
-    script(src='javascripts/lib/angular-1.2.5/angular.js')
-    script(src='javascripts/lib/angular-1.2.5/angular-route.js')
+    script(src='javascripts/lib/angular-1.2.13/angular.min.js')
+    script(src='javascripts/lib/angular-1.2.13/angular-route.min.js')
     script(src='javascripts/lib/bootstrap-gh-pages/ui-bootstrap-tpls-0.10.0.min.js')
-    script(src='http://code.angularjs.org/1.0.0rc10/angular-cookies-1.0.0rc10.js')
+    script(src='javascripts/lib/angular-1.2.13/angular-cookies.min.js')
     script(src='javascripts/app.js')
     script(src='javascripts/controllers/ratingController.js')
     script(src='javascripts/controllers/homeController.js')
@@ -50,8 +50,6 @@ block content
                 li(ng-show='DisplayLoggedIn')
                     a(href='#/getUserByID/{{facebook_user}}',class="facebook-loggedin")
                         img(src='https://graph.facebook.com/{{facebook_user}}/picture')
-    br
-    br
+
     div(class="container-fluid",ng-view)
-    div(id="fb-root")
 
