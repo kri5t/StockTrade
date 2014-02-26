@@ -44,7 +44,7 @@ block content
                 button(type="submit",class=" btn btn-default", ng-click='searchForPlace()') Find aktie
             ul(class="nav navbar-nav navbar-right")
                 li(ng-show='facebook_user_name')
-                    p(class="navbar-text"){{facebook_user_name}}
+                    p(class="navbar-text") {{facebook_user_name}}
                 li(ng-show='DisplayFacebookLogin')
                     a(id='fb-login', class="fb-login",href="/auth/facebook") Log på med Facebook
                 li(ng-show='DisplayLoggedIn')

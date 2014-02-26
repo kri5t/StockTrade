@@ -1,12 +1,13 @@
 div(class="row")
-    p There are {{stocks.length}} places in the system!
-    table(class="table")
-        thead
-            tr
-                th Name
-                th Ratings
-        tbody
-            tr(ng-repeat='stock in stocks')
-                td
-                    a(href='#/getRatingByStockID/{{stock.stock_id}}') {{stock.name}}
-                td {{stock.stock_id}}
+    p There are {{stocks.length}} stocks in the system!
+    div(class="table-responsive")
+        table(class="table table-striped")
+            thead
+                tr
+                    th Name
+                    th Ratings
+            tbody
+                tr(ng-repeat='stock in stocks')
+                    td
+                        a(href='#/getRatingByStockID/{{stock.stock_id}}') {{stock.name}}
+                    td {{stock.stock_id}}

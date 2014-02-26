@@ -1,6 +1,11 @@
-h3 Users
+div(class="row")
+    h3 Users
     p There are {{results.length}} users in the system!
-    div(ng-repeat='user in results')
-        {{$index+1}}
-        a(href='#/getUserByID/{{user.user_id}}') {{user.user_id}}
-        br
+    table(class="table table-striped")
+        thead
+            tr
+                th Name
+        tbody
+            tr(ng-repeat='user in results')
+                td
+                    a(href='#/getUserByID/{{user.user_id}}') {{user.user_name}}
